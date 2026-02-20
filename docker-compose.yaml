@@ -159,12 +159,33 @@ services:
         max-size: "10m"
         max-file: "3"
         compress: "true"
+   
   searxng:
     image: searxng/searxng:latest
+    entrypoint: /bin/sh
+    command:
+      - -c
+      - |
+        printf '%s\n' \
+          'use_default_settings: true' \
+          '' \
+          'search:' \
+          '  formats:' \
+          '    - html' \
+          '    - json' \
+          '' \
+          'server:' \
+          "  secret_key: \"$(openssl rand -hex 32)\"" \
+          '  limiter: false' \
+          '  image_proxy: false' \
+          '  method: GET' \
+          '' \
+          'redis:' \
+          '  url: false' \
+          > /etc/searxng/settings.yml && \
+        exec /usr/local/searxng/dockerfiles/docker-entrypoint.sh
     networks:
       - backend
-    volumes:
-      - ./searxng:/etc/searxng:rw
     restart: unless-stopped
     logging:
       driver: json-file

@@ -1,0 +1,15 @@
+se_default_settings: true
+
+search:
+  formats:
+    - html
+    - json
+
+server:
+  secret_key: "af84f1f563e7c9d3441fa406778f9e34cb4861b66b07a447d77ca486ac032cde"
+  limiter: false
+  image_proxy: false
+  method: GET
+
+redis:
+  url: false

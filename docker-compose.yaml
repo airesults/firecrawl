@@ -161,9 +161,7 @@ services:
         compress: "true"
    
   searxng:
-    image: searxng/searxng:latest
-    volumes:
-      - ./searxng/settings.yml:/etc/searxng/settings.yml:ro
+    build: ./searxng
     networks:
       - backend
     restart: unless-stopped

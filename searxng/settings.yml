@@ -1,4 +1,4 @@
-se_default_settings: true
+use_default_settings: true
 
 search:
   formats:

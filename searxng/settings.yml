@@ -4,7 +4,8 @@ search:
   formats:
     - html
     - json
-
+  default_lang: en
+  region: nl-NL
 server:
   secret_key: "af84f1f563e7c9d3441fa406778f9e34cb4861b66b07a447d77ca486ac032cde"
   limiter: false
